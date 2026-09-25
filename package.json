@@ -1,0 +1,49 @@
+{
+  "name": "multi-input",
+  "version": "1.0.0",
+  "description": "A lightweight Vanilla JavaScript plugin that allows multiple values for input elements",
+  "main": "./dist/src/js/multi-input.js",
+  "module": "./dist/js/multi-input.esm.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "css-loader": "^7.1.5",
+    "dompurify": "^3.4.16"
+  },
+  "devDependencies": {
+    "mini-css-extract-plugin": "^2.10.2",
+    "sass": "^1.105.0",
+    "sass-loader": "^17.0.1",
+    "shx": "^0.4.0",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3"
+  },
+  "scripts": {
+    "watch": "webpack --watch --progress",
+    "dev": "npm run clean && cross-env NODE_ENV=\"development\" webpack",
+    "clean": "shx rm -rf build/static",
+    "build": "npm run clean && cross-env NODE_ENV=\"production\" webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsjippy/MultiInput.git"
+  },
+  "keywords": [
+    "select",
+    "vanilla"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsjippy/MultiInput/issues"
+  },
+  "homepage": "https://github.com/tsjippy/MultiInput#readme",
+  "exports": {
+    ".": {
+      "import": "./dist/js/multi-input.esm.js",
+      "require": "./dist/js/multi-input.js"
+    }
+  }
+}

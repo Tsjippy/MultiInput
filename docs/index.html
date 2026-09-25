@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <title>Vanilla Javascript Multi Input</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600&Inconsolata:400,700' rel='stylesheet"
+    type="text/css">
+  <link rel="stylesheet" href="demo/style.css">
+  <link rel="stylesheet" href="dist/css/style.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40665301-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-40665301-3');
+  </script>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1> Multi Input</h1>
+
+      <p>A lightweight vanilla javascript library that replaces native input elements with list options</p>
+
+      <a href="https://github.com/tsjippy/MultiInput/releases" class="button">Download</a>
+      <a href="https://github.com/tsjippy/MultiInput" class="button light">View on GitHub</a>
+    </div>
+
+    <h2>Usage</h2>
+    <p><strong>1.</strong> Include the library.</p>
+
+    <pre><code class="language-html">&lt;script src=&quot;path/to/multi-input.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+    <p><strong>2.</strong> Include the plugin styles, either the compiled CSS...</p>
+
+    <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/multi-input.css&quot;&gt;</code></pre>
+
+    <p>...or, ideally, import the SASS source (if you use SASS) in your main stylesheet for easier customization.</p>
+
+    <pre><code class="language-scss">@import 'multi-input'; //See 'Notes' section.</code></pre>
+
+    <p>
+      <strong>3.</strong> Finally, initialize the plugin.<br>
+      You have two options:<br>
+      <i>Option A: All input:multiple elements on the page</i><br>
+      <pre><code class="language-js">MultiInput.attachAll();</code></pre>
+      <i>Option B: a specific input</i><br>
+      <pre><code class="language-js">new MultiInput.MultiInput(el)</code></pre>
+    </p>
+
+    <p>All done. That will turn this:</p>
+
+    <div class="box">
+      <input type="text" name="example" multiple>
+    </div>
+
+    <p>...into this:</p>
+
+    <div class="box">
+      <input type="text" name="example" class="change" multiple>
+    </div>
+
+    <p>
+      There are a couple of options you can specify, either via a second parameter:<br>
+      <pre>
+        <code class="language-js">
+    new MultiInput.MultiInput(el, {
+      class: '',
+      prefill: [],
+      useListValue: true
+    })
+        </code>
+      </pre><br>
+      All values can also be supplied as data attributes on the original input
+    </p>
+
+    <h2>Class</h2>
+    <p>
+      Specify extra classes as a string to be added to the list wrapper
+      <pre>
+        <code class="language-js">
+    new MultiInput.MultiInput(el, {
+      class: 'some extra classes'
+    })
+        </code></pre>
+    </p>
+
+    <h2>Prefill Values</h2>
+
+    <p>
+      Supply any values that should be added by default.<br>
+      When supplied via a data attribute it should be a json encode string.
+    </p>
+
+    <pre>
+      <code class="language-js">
+    new MultiInput.MultiInput(el, {
+      prefill: [
+        "Value 1",
+        "Value 2",
+        "Value 3"
+      ]
+    })
+      </code>
+    </pre>
+
+    <div class="box">
+      <input type="text" name="example" class="change" multiple data-prefill='["Value 1","Value 2","Value 3"]'>
+    </div>
+
+    <h2>useListValue</h2>
+    <p>
+      An input can have a datalist attached to it, for easier supplying of values.<br>
+      Set this to true if you want the data-value of an option to be added instead of the value<br>
+      The list option will be added with the value as label and the data-value as value<br><br>
+      <i>Example</i><br>
+      <code>
+        &lt;datalist id="phones"&gt;<br>
+          &lt;option data-value="345" value="+12345678899"&gt;Some Name 1&lt;/option&gt;<br>
+          &lt;option data-value="346" value="+12345659"&gt;Some Name 2&lt;/option&gt;<br>
+        &lt;/datalist&gt;
+      </code>
+    </p>
+
+    <div class="box">
+      <input type="text" name="example" class="change" multiple data-uselistvalue="true" list="phones">
+      <datalist id="phones">
+          <option data-value="345" value="+12345678899">
+            Some Name 1
+          </option>
+          <option data-value="346" value="+12345659">
+            Some Name 2</option>
+        </datalist>
+    </div>
+    
+    <h2>Notes</h2>
+
+    <ul>
+      <li>
+        When you request the value of the element (<code>el.value</code>) it will return the value of the main input if not empty else an array of already supplied values
+      </li>
+    </ul>
+
+    <div class="footer">
+      <h2>Use responsibly</h2>
+
+      <a href="https://github.com/tsjippy/MultiInput/releases" class="button">Download</a>
+      <a href="https://github.com/tsjippy/MultiInput" class="button light">View on GitHub</a>
+    </div>
+  </div>
+
+  <script src="dist/js/multi-input.js"></script>
+  <script src="demo/fastclick.js"></script>
+  <script src="demo/prism.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", e => {
+
+      // default
+      const els = document.querySelectorAll("input.change").forEach(function (input) {
+        new MultiInput.MultiInput(input);
+      });
+    });
+  </script>
+
+</body>
+
+</html>

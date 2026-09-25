@@ -25,7 +25,7 @@ Include the styles, either the compiled CSS...
 Or import multi-input using ES6 syntax
 
 ```js
-import MultiInput from "multi-input";
+import {MultiInput, attachAll} from "multi-input";
 ```
 
 ```scss

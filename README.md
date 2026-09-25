@@ -5,7 +5,7 @@ A lightweight Vanilla JavaScript plugin that allows multiple values for text, em
 ## Install
 
 ```
-npm i multi-input
+npm i @tsjippy/multi-input
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ Include the styles, either the compiled CSS...
 Or import multi-input using ES6 syntax
 
 ```js
-import {MultiInput, attachAll} from "multi-input";
+import {MultiInput, attachAll} from "@tsjippy/multi-input";
 ```
 
 ```scss
